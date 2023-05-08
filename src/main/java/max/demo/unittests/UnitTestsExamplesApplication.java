@@ -1,4 +1,4 @@
-package max.demo.unittestsexamples;
+package max.demo.unittests;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
