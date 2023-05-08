@@ -11,6 +11,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CarService {
 
+    /* this field is injected by constructor,
+     @RequiredArgsConstructor creates a constructor that contains all "final" fields */
     private final CarRepository carRepository;
 
     public List<Car> getAllCars() {

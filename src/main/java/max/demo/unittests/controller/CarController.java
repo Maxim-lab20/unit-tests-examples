@@ -19,12 +19,10 @@ public class CarController {
 
     @GetMapping("/cars")
     public ResponseEntity<List<Car>> getAllCars() {
-        /*
-            I usually don't like having any logic inside constructor class.
-            I don't know if this is a good practice or not. It's more like a preference.
-            I only do that when I have no other options only.
-            I do it now for demo purposes.
-         */
+        /* Note: I usually don't like having any logic inside constructor class.
+           I don't know if this is a good practice or not. It's more like a preference.
+           I only do that when I have no other options.
+           I do it now for demo purposes. */
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("app-name", "max-app");
 
