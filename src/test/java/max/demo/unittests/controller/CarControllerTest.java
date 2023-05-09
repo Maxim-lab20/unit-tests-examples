@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
  * Unit test class for CarController class.
  * getAllCars_1() and getAllCars_2() do the exact same thing even though the code is doing it in different ways.
  * Besides how a unit test can be written I want to show you that there are many ways in which one unit test can be written.
- * From my point of view, as long as the code is clean and easy to follow, if it does the job wel, it's keeper.
+ * From my point of view, as long as the code is clean, easy to follow, and it does the job wel, it's keeper.
  */
 @ExtendWith(MockitoExtension.class)
 class CarControllerTest {
@@ -33,8 +33,14 @@ class CarControllerTest {
     @Mock
     CarService carService;
 
+    /**
+     * Don't bother about public, private etc. It's not a relevant thing in our unit tests.
+     * You can use a ton of different names. As long as they are suggestive they're good.
+     * examples: getAllCars_success(), getAllCarsSuccess(), getAllCarsWithSuccess() - they all suggest the same thing
+     * The key is TO BE CONSISTENT in you namings.
+     */
     @Test
-    void getAllCars_1() { // don't bother using public, private etc. It's not relevant
+    void getAllCars_1() {
         // GIVEN
         List<Car> cars = List.of(Car.builder()
                 .brand("Opel")
