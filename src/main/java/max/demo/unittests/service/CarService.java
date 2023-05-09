@@ -11,12 +11,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CarService {
 
-    /* this field is injected by constructor,
-     @RequiredArgsConstructor creates a constructor that contains all "final" fields */
     private final CarRepository carRepository;
 
     public List<Car> getAllCars() {
         return carRepository.getAllCars();
+    }
+
+    public Car addNewCar(Car car) {
+
+        if (!"BMW".equals(car.getBrand()) && !"AUDI".equals(car.getBrand()) && !"MERCEDES".equals(car.getBrand())) {
+            throw new IllegalArgumentException("The brand of the car must be: BMW, AUDI or MERCEDES.");
+        }
+
+        if (car.getNumberOfSeats() > 5) {
+            throw new IllegalArgumentException("The car has more than 5 seats.");
+        }
+
+        return carRepository.saveCar(car);
     }
 
 }

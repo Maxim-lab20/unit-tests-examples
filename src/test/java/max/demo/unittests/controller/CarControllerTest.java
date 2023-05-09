@@ -33,14 +33,8 @@ class CarControllerTest {
     @Mock
     CarService carService;
 
-    /**
-     * Don't bother about public, private etc. It's not a relevant thing in our unit tests.
-     * You can use a ton of different names. As long as they are suggestive they're good.
-     * examples: getAllCars_success(), getAllCarsSuccess(), getAllCarsWithSuccess() - they all suggest the same thing
-     * The key is TO BE CONSISTENT in you namings.
-     */
     @Test
-    void getAllCars_1() {
+    void getAllCars_success1() { // Don't bother about public, private etc. It's not a relevant
         // GIVEN
         List<Car> cars = List.of(Car.builder()
                 .brand("Opel")
@@ -68,7 +62,7 @@ class CarControllerTest {
     }
 
     @Test
-    void getAllCars_2() {
+    void getAllCars_success2() {
         // GIVEN
         List<Car> cars = List.of(Car.builder()
                 .brand("Opel")
@@ -94,6 +88,37 @@ class CarControllerTest {
                 .isEqualTo(expectedHttpHeaders);
         assertThat(actualResponse.getBody())
                 .isEqualTo(cars);
+    }
+
+    /**
+     * The carService that is mocked doesn't make the verifications that are made in the real carService.
+     * This is good, because the idea of this unit test is to test ONLY THE CODE INSIDE the controller class.
+     * We don't care about any logic that happens at the service level. The controller only knows that he has to
+     * return what carService.addNewCar(car) is returning.
+     * This is the meaning of testing the code in an isolated way.
+     */
+    @Test
+    void addNewCar_success1() {
+        // GIVEN
+        Car car = Car.builder()
+                .brand("Opel")
+                .manufactureYear(LocalDate.of(2006, Month.JANUARY, 1))
+                .model("Meriva")
+                .numberOfSeats(4)
+                .engineCapacity(1.3f)
+                .build();
+
+        when(carService.addNewCar(car))
+                .thenReturn(car);
+
+        // WHEN
+        ResponseEntity<Car> actualResponse = carController.addNewCar(car);
+
+        // THEN
+        assertThat(actualResponse.getStatusCode())
+                .isEqualTo(HttpStatus.CREATED);
+        assertThat(actualResponse.getBody())
+                .isEqualTo(actualResponse.getBody());
     }
 
 }

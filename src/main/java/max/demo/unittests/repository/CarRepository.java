@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class CarRepository {
 
-    private final List<Car> cars =
+    private List<Car> cars =
             List.of(buildCar("Mercedes", LocalDate.of(2023, Month.JANUARY, 1), "C class",
                             4, 2f),
                     buildCar("BMW", LocalDate.of(2023, Month.JANUARY, 1), "Series 3",
@@ -24,6 +24,11 @@ public class CarRepository {
 
     public List<Car> getAllCars() {
         return cars;
+    }
+
+    public Car saveCar(Car car) {
+        cars.add(car);
+        return car;
     }
 
     private Car buildCar(String brand, LocalDate manufactureYear, String model,
