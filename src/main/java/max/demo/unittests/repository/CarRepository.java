@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,13 +15,13 @@ import java.util.List;
 @Repository
 public class CarRepository {
 
-    private List<Car> cars =
-            List.of(buildCar("Mercedes", LocalDate.of(2023, Month.JANUARY, 1), "C class",
+    private ArrayList<Car> cars =
+            new ArrayList<>(List.of(buildCar("MERCEDES", LocalDate.of(2023, Month.JANUARY, 1), "C class",
                             4, 2f),
                     buildCar("BMW", LocalDate.of(2023, Month.JANUARY, 1), "Series 3",
                             2, 3f),
-                    buildCar("Audi", LocalDate.of(2023, Month.JANUARY, 1), "A4",
-                            4, 1.6f));
+                    buildCar("AUDI", LocalDate.of(2023, Month.JANUARY, 1), "A4",
+                            4, 1.6f)));
 
     public List<Car> getAllCars() {
         return cars;
