@@ -118,7 +118,7 @@ class CarControllerTest {
         assertThat(actualResponse.getStatusCode())
                 .isEqualTo(HttpStatus.CREATED);
         assertThat(actualResponse.getBody())
-                .isEqualTo(actualResponse.getBody());
+                .isEqualTo(car);
     }
 
 }
